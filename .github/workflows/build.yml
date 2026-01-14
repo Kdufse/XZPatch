@@ -82,7 +82,6 @@ jobs:
           generateReleaseNotes: true
           allowUpdates: true
           replacesArtifacts: true
- 
 
   Release-user-lib:
     runs-on: ubuntu-latest
@@ -118,7 +117,6 @@ jobs:
             kpuser.zip
           allowUpdates: true
           replacesArtifacts: true
- 
 
   Build-android-kptools:
     runs-on: ubuntu-latest
@@ -166,13 +164,11 @@ jobs:
           cmake --build .
           mv kptools kptools-android
 
-      - name: Upload elf
+      - name: Upload kptools-android artifact
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            kernel/kptools.elf-android
-            kernel/kptools.elf-android
-          name: kpimg.elf
+          path: tools/build/android/kptools-android
+          name: kptools-android
 
       - name: Release
         uses: ncipollo/release-action@v1.14.0
@@ -183,7 +179,6 @@ jobs:
             tools/build/android/kptools-android
           allowUpdates: true
           replacesArtifacts: true
- 
 
   Build-kptools-linux:
     runs-on: ubuntu-latest
@@ -217,13 +212,11 @@ jobs:
           make
           mv kptools kptools-linux
 
-      - name: Upload elf
+      - name: Upload kptools-linux artifact
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            kernel/kptools.elf-linux
-            kernel/kptools.elf-linux
-          name: kpimg.elf
+          path: tools/build/kptools-linux
+          name: kptools-linux
 
       - name: Release
         uses: ncipollo/release-action@v1.14.0
@@ -234,7 +227,7 @@ jobs:
             tools/build/kptools-linux
           allowUpdates: true
           replacesArtifacts: true
- 
+
   Build-kptools-windows-msys2:
     runs-on: windows-2022
     permissions:
@@ -283,15 +276,13 @@ jobs:
           cp .\tools\kptools.exe .\win\kptools-msys2.exe
           cp D:\a\_temp\msys64\usr\bin\msys-2.0.dll .\win
           cp D:\a\_temp\msys64\usr\bin\msys-z.dll .\win
-          7z a kptools-msys2-win .\win 
+          7z a kptools-msys2-win .\win
 
-      - name: Upload elf
+      - name: Upload kptools-windows artifact
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            kernel/kptools.zip-win-msys2
-            kernel/kptools.zip-win-msys2
-          name: kpimg.elf
+          path: kptools-msys2-win.7z
+          name: kptools-windows-msys2
 
       - name: Release
         uses: ncipollo/release-action@v1.12.0
@@ -334,6 +325,13 @@ jobs:
           cmake ..
           make
           mv kptools kptools-mac
+
+      - name: Upload kptools-mac artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: tools/build/kptools-mac
+          name: kptools-mac
+
       - name: Release
         uses: ncipollo/release-action@v1.14.0
         with:
@@ -343,4 +341,3 @@ jobs:
             tools/build/kptools-mac
           allowUpdates: true
           replacesArtifacts: true
- 
