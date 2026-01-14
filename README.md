@@ -3,12 +3,12 @@
 **Patching and hooking the Linux kernel with only stripped Linux kernel image.**
 
 ``` shell
- _  __                    _ ____       _       _     
-| |/ /___ _ __ _ __   ___| |  _ \ __ _| |_ ___| |__  
-| ' // _ \ '__| '_ \ / _ \ | |_) / _` | __/ __| '_ \ 
-| . \  __/ |  | | | |  __/ |  __/ (_| | || (__| | | |
-|_|\_\___|_|  |_| |_|\___|_|_|   \__,_|\__\___|_| |_|
-
+ __  __ _________       _       _     
+ \ \/ /|__  /  _ \ __ _| |_ ___| |__  
+  \  /   / /| |_) / _` | __/ __| '_ \ 
+  /  \  / /_|  __/ (_| | || (__| | | |
+ /_/\_\/____|_|   \__,_|\__\___|_| |_|
+                                      
 ```
 
 - Obtain all symbol information without source code and symbol information.
